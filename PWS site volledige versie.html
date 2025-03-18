@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PWS - Toekomstige Technologieën en Innovaties</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- AOS CSS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+  <style>
+    /* CSS-variabelen voor kleuren */
+    :root {
+      --primary: #005f73;
+      --secondary: #0a9396;
+      --accent: #94d2bd;
+      --highlight: #ee9b00;
+      --bg: #eef2f3;
+      --text: #333;
+      --table-header: #0a9396;
+      --table-row: #94d2bd;
+    }
+    /* Reset & globale stijlen */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 60px 10%;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--accent);
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.4em;
+    }
+    /* Sticky navigatie */
+    nav {
+      background: var(--accent);
+      padding: 15px 10%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      font-weight: 700;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+    /* Secties */
+    section {
+      background: #fff;
+      margin: 40px auto;
+      padding: 40px 10%;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      font-size: 2em;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    .subsection {
+      margin-bottom: 30px;
+    }
+    section ul, section ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    /* Tabellen */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 1rem;
+    }
+    table th, table td {
+      padding: 12px 15px;
+      border: 1px solid var(--secondary);
+      text-align: left;
+    }
+    table th {
+      background-color: var(--table-header);
+      color: #fff;
+    }
+    table tr:nth-child(even) {
+      background-color: #f7f7f7;
+    }
+    table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+    table tr:hover {
+      background-color: var(--accent);
+      color: #fff;
+    }
+    /* Grafieken */
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .chart-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .chart-box canvas {
+      max-width: 100%;
+    }
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 20px 10%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header data-aos="fade-down">
+    <h1>PWS Mohammed Ali, Rigginio en Faizaan</h1>
+    <p>Toekomstige Technologieën en Innovaties</p>
+  </header>
+
+  <!-- Navigatie -->
+  <nav data-aos="fade-down">
+    <ul>
+      <li><a href="#introductie">Introductie</a></li>
+      <li><a href="#inhoudsopgave">Inhoudsopgave</a></li>
+      <li><a href="#smartgrids">Smart Grids</a></li>
+      <li><a href="#verwarming">Verwarmingsmethoden</a></li>
+      <li><a href="#batterijopslag">Batterijopslag</a></li>
+      <li><a href="#deelvragen">Deelvragen</a></li>
+      <li><a href="#resultaat">Resultaat & Lessen</a></li>
+      <li><a href="#logboek">Logboek</a></li>
+      <li><a href="#grafieken">Grafieken</a></li>
+      <li><a href="#tabellen">Tabellen</a></li>
+      <li><a href="#bronnen">Bronnen</a></li>
+    </ul>
+  </nav>
+
+  <!-- Introductie -->
+  <section id="introductie" data-aos="fade-up">
+    <h2>Introductie</h2>
+    <div class="subsection">
+      <p><strong>Slimme Energienetwerken:</strong> Onderzoek de rol van slimme energienetwerken (smart grids) in de efficiëntere verdeling en gebruik van energie.</p>
+      <p><strong>Nieuwe Verwarmingstechnologieën:</strong> Bekijk innovaties in verwarmingstechnologieën die minder energie verbruiken.</p>
+      <p><strong>Batterijopslag:</strong> Onderzoek hoe batterijopslag kan helpen bij het opslaan van overtollige energie voor gebruik in de winter.</p>
+      <p>We vinden dit interessant omdat deze technologieën helpen energie te besparen, kosten te verlagen en bijdragen aan duurzaamheid en dit is essentieel voor onze toekomst.</p>
+    </div>
+    <div class="subsection">
+      <h3>Hoofdvraag</h3>
+      <p>Hoe kunnen slimme energienetwerken, nieuwe verwarmingsmethoden en batterijopslag consumenten helpen om energie efficiënter en slimmer te gebruiken met kostenbesparende uitwerking?</p>
+    </div>
+    <div class="subsection">
+      <h3>Deelvragen</h3>
+      <p>
+        <strong>Slimme Energienetwerken:</strong><br>
+        - Wat zijn slimme energienetwerken (smart grids) en hoe werken ze?<br>
+        - Hoe kunnen slimme energienetwerken ervoor zorgen dat we energie beter en zuiniger gebruiken?<br>
+        - Welke technologieën zijn belangrijk voor slimme energienetwerken?
+      </p>
+      <p>
+        <strong>Nieuwe Verwarmingsmethoden:</strong><br>
+        - Welke nieuwe methoden zijn er om huizen en gebouwen te verwarmen met minder energie?<br>
+        - Hoe zorgen deze nieuwe verwarmingsmethoden voor energiebesparing?<br>
+        - Wat zijn de voor- en nadelen van deze nieuwe verwarmingsmethoden?
+      </p>
+      <p>
+        <strong>Batterijopslag:</strong><br>
+        - Hoe werkt het opslaan van energie in batterijen en welke soorten batterijen worden daarvoor gebruikt?<br>
+        - Hoe kunnen batterijen helpen om overtollige energie op te slaan voor gebruik in de winter?<br>
+        - Wat zijn de uitdagingen en mogelijkheden van het gebruik van batterijen in ons energienetwerk?
+      </p>
+      <p>
+        Verder gaan we in gesprek met een professor over de energietransitie, TNO en consumenten over de energietransitie. Voor ons veldonderzoek gebruiken we onder andere TNO, interviews en Google Scholar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Inhoudsopgave -->
+  <section id="inhoudsopgave" data-aos="fade-up">
+    <h2>Inhoudsopgave</h2>
+    <ul>
+      <li>Introductie</li>
+      <li>Waar gaat ons PWS over?</li>
+      <li>Wat gaan we onderzoeken?</li>
+      <li>Hoe hebben we dit voor elkaar gekregen?</li>
+      <li>Smart Grids
+        <ul>
+          <li>Wat zijn Smart Grids?</li>
+          <li>Hoe kan je Smart Grids gebruiken om energie te besparen?</li>
+          <li>Welke technologieën heb je nodig voor deze Smart Grids?</li>
+        </ul>
+      </li>
+      <li>Verwarmingsmethoden
+        <ul>
+          <li>Welke nieuwe methoden zijn er om huizen en gebouwen te verwarmen met minder energie?</li>
+          <li>Hoe zorgen deze nieuwe verwarmingsmethoden voor energiebesparing?</li>
+          <li>Wat zijn de voor- en nadelen van deze nieuwe verwarmingsmethoden?</li>
+        </ul>
+      </li>
+      <li>Batterijopslag
+        <ul>
+          <li>Hoe werkt het opslaan van energie in batterijen en welke soorten batterijen worden daarvoor gebruikt?</li>
+          <li>Hoe kunnen batterijen helpen om overtollige energie op te slaan voor gebruik in de winter?</li>
+          <li>Wat zijn de uitdagingen en mogelijkheden van het gebruik van batterijen in ons energienetwerk?</li>
+        </ul>
+      </li>
+      <li>Conclusie</li>
+      <li>Resultaat van onderzoek</li>
+      <li>Wat hebben wij geleerd?</li>
+      <li>Logboek</li>
+      <li>Beeldend onderdeel</li>
+      <li>Website</li>
+    </ul>
+  </section>
+
+  <!-- Smart Grids -->
+  <section id="smartgrids" data-aos="fade-up">
+    <h2>Smart Grids</h2>
+    <div class="subsection">
+      <p>Slimme energienetwerken (smart grids) zorgen ervoor dat energie automatisch verdeeld wordt tussen zonnepanelen, windmolens en huizen. Ze gebruiken sensoren, slimme meters en software om te monitoren waar energie nodig is en om overtollige energie te herverdelen.</p>
+      <p>Uit ons onderzoek blijkt dat smart grids de energie-efficiëntie met 10-25% kunnen verbeteren en daarmee zowel energiekosten als CO₂-uitstoot reduceren.</p>
+    </div>
+  </section>
+
+  <!-- Verwarmingsmethoden -->
+  <section id="verwarming" data-aos="fade-up">
+    <h2>Verwarmingsmethoden</h2>
+    <div class="subsection">
+      <p>Er zijn nieuwe innovaties op het gebied van verwarmingstechnologieën. Warmtepompen halen warmte uit de lucht of grond en infraroodpanelen verwarmen direct objecten of mensen. Ook stadsverwarming, waarbij restwarmte van fabrieken wordt hergebruikt, speelt een rol.</p>
+      <p>Warmtepompen blijken tot wel 3 tot 5 keer meer warmte te leveren per kWh stroom dan traditionele methoden. Wel is het belangrijk dat een huis goed geïsoleerd is om optimaal te profiteren van deze technieken.</p>
+    </div>
+  </section>
+
+  <!-- Batterijopslag -->
+  <section id="batterijopslag" data-aos="fade-up">
+    <h2>Batterijopslag</h2>
+    <div class="subsection">
+      <p>Batterijopslag maakt het mogelijk om overtollige energie – bijvoorbeeld van zonnepanelen – op te slaan voor later gebruik. Dit is vooral belangrijk om in de winter energie uit de zomer op te slaan.</p>
+      <p>In ons onderzoek ontdekten we dat lithium-ion batterijen het meest gebruikt worden, maar dat er steeds milieuvriendelijkere alternatieven op de markt komen, zoals zoutwater- en flowbatterijen.</p>
+    </div>
+  </section>
+
+  <!-- Antwoorden op Deelvragen -->
+  <section id="deelvragen" data-aos="fade-up">
+    <h2>Antwoorden op Deelvragen</h2>
+    <div class="subsection">
+      <h3>Slimme Energienetwerken</h3>
+      <ol>
+        <li>
+          <strong>Wat zijn smart grids en hoe werken ze?</strong>
+          <p>Slimme energienetwerken (smart grids) zijn netwerken die energie <em>automatisch</em> verdelen, bijvoorbeeld tussen zonnepanelen, windmolens en huizen. Ze gebruiken sensoren en software om te zien waar energie nodig is. Zo meet een slimme meter thuis je verbruik en stuurt dit door. Als er ergens te veel stroom is (bijvoorbeeld door zon), verdeelt het netwerk dit naar plekken met tekort.</p>
+        </li>
+        <li>
+          <strong>Hoe zorgen ze voor zuiniger energiegebruik?</strong>
+          <p>Ze voorkomen verspilling. Bijvoorbeeld: overdag wekken zonnepanelen veel op, maar verbruiken we weinig. Smart grids slaan dit op of sturen het naar bedrijven die wél open zijn. Zo hoeven kolencentrales minder hard te werken, wat energie én CO₂ bespaart. Uit onderzoek van TNO blijkt dat dit de efficiëntie met 10-25% verhoogt.</p>
+        </li>
+        <li>
+          <strong>Belangrijke technologieën?</strong>
+          <ul>
+            <li><strong>Slimme meters</strong>: Meten live je verbruik.</li>
+            <li><strong>IoT (Internet of Things)</strong>: Apparaten praten met elkaar (bv. je wasmachine gaat aan als stroom goedkoop is).</li>
+            <li><strong>AI</strong>: Voorspelt waar energie nodig is, bijvoorbeeld bij een koude winteravond.</li>
+          </ul>
+        </li>
+      </ol>
+      
+      <hr>
+      
+      <h3>Nieuwe Verwarmingsmethoden</h3>
+      <ol>
+        <li>
+          <strong>Welke methoden zijn er?</strong>
+          <ul>
+            <li><strong>Warmtepompen</strong>: Halen warmte uit de lucht of grond. Gebruiken weinig stroom (1 kWh stroom = 3-5 kWh warmte).</li>
+            <li><strong>Infraroodpanelen</strong>: Verwarmen direct mensen/objecten, niet de lucht (zuiniger).</li>
+            <li><strong>Stadsverwarming</strong>: Restwarmte van fabrieken wordt hergebruikt voor huizen.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Hoe besparen ze energie?</strong>
+          <p>Warmtepompen zijn 3x efficiënter dan oude gas-ketels. Infrarood werkt alleen waar nodig, dus geen warmte verspillen in lege kamers. Volgens een expert van TNO kun je hiermee jaarlijks honderden euro’s besparen.</p>
+        </li>
+        <li>
+          <strong>Voor- en nadelen:</strong>
+          <ul>
+            <li><em>Voordelen</em>: Lagere energierekening, minder CO₂.</li>
+            <li><em>Nadelen</em>: Hoge installatiekosten (bv. warmtepomp kost €5.000+). Ook moet je huis goed geïsoleerd zijn, anders werkt het niet optimaal.</li>
+          </ul>
+        </li>
+      </ol>
+      
+      <hr>
+      
+      <h3>Batterijopslag</h3>
+      <ol>
+        <li>
+          <strong>Hoe werkt het en welke batterijen?</strong>
+          <p>Energie (bijv. van zonnepanelen) wordt opgeslagen in batterijen voor later gebruik. Meest gebruikt zijn <strong>lithium-ion</strong> (zoals in elektrische auto’s) en <strong>zoutwaterbatterijen</strong> (milieuvriendelijker).</p>
+        </li>
+        <li>
+          <strong>Opslaan voor de winter?</strong>
+          <p>In de zomer wek je veel zon op, in de winter weinig. Met batterijen kun je de zomer-energie bewaren voor koude dagen. Zo heb je minder gas nodig.</p>
+        </li>
+        <li>
+          <strong>Uitdagingen en mogelijkheden:</strong>
+          <ul>
+            <li><em>Uitdagingen</em>: Batterijen zijn duur (€4.000+ voor een huis) en lithium is slecht voor het milieu.</li>
+            <li><em>Mogelijkheden</em>: Nieuwe technieken zoals <strong>flowbatterijen</strong> (gebruiken water) zijn in ontwikkeling. Een professor vertelde ons dat dit over 5-10 jaar betaalbaar kan zijn.</li>
+          </ul>
+        </li>
+      </ol>
+      
+      <hr>
+      
+      <h3>Conclusie (kort)</h3>
+      <p>Deze drie technieken vullen elkaar aan. Smart grids sturen energie slim rond, nieuwe verwarming gebruikt minder stroom, en batterijen zorgen dat we duurzame energie niet verspillen. Samen maken ze energie goedkoper en groener. Wel moet de overheid helpen met subsidies, want de kosten zijn nu nog hoog voor veel mensen.</p>
+    </div>
+  </section>
+
+  <!-- Resultaat van onderzoek & Wat hebben wij geleerd -->
+  <section id="resultaat" data-aos="fade-up">
+    <h2>Resultaat van Onderzoek</h2>
+    <div class="subsection">
+      <p>We zijn diep ingedoken in hoe we in de toekomst slimmer met energie kunnen omgaan. Drie belangrijke zaken kwamen steeds terug: slimme energienetwerken, nieuwe manieren om huizen warm te houden, en betere manieren om energie op te slaan. Samen kunnen deze dingen ervoor zorgen dat we veel minder energie verspillen en meer uit duurzame bronnen halen.</p>
+
+      <p>Slimme energienetwerken (smart grids): Dit zijn energienetwerken die zelf kunnen "denken". Ze meten bijvoorbeeld waar op een bepaald moment veel stroom nodig is en sturen die dan precies daarheen. Denk aan een soort verkeerslicht voor elektriciteit. Uit onze cijfers blijkt dat dit energieverspilling met 10-25% kan verminderen. Voor gewone mensen betekent dit: lagere rekeningen en minder gedoe met stroomuitval.</p>
+   
+      <p>Bij de verwarmingsmethoden hebben we gezien dat er veel nieuwe mogelijkheden zijn, zoals warmtepompen en infraroodverwarming. Vooral warmtepompen zijn interessant omdat ze 3 tot 5 keer meer warmte kunnen geven dan ze aan elektriciteit gebruiken. Wel hebben we geleerd dat de keuze van verwarmingsmethode echt afhangt van je situatie, zoals hoe goed je huis geïsoleerd is.</p>
+
+      <p>Energie opslaan voor later: Zonnepanelen maken overdag stroom, maar 's avonds heb je die ook nodig. Daarom zijn goede batterijen zo belangrijk. De meeste mensen kennen lithium-ionbatterijen (zoals in telefoons), maar er komen nu ook opties zoals batterijen op zoutwaterbasis. Die zijn minder schadelijk voor het milieu en makkelijker te recyclen. Dit is cruciaal om straks écht volledig op wind- en zonne-energie te kunnen draaien.</p>
+    </div>
+    <div class="subsection">
+      <h3>Wat hebben wij geleerd</h3>
+      <p>Dit project heeft ons veel geleerd over hoe we in de toekomst slimmer met energie kunnen omgaan. We hebben gezien dat het niet één oplossing is die alles gaat verbeteren, maar dat verschillende technologieën samen moeten werken. Ook hebben we geleerd hoe belangrijk het is om nu al na te denken over duurzame energie, omdat het tijd kost om deze systemen te ontwikkelen en te verbeteren.</p>
+      <p>We hebben ook geleerd hoe je een groot onderzoek aanpakt. Door samen te werken en elk een eigen deel te onderzoeken, konden we veel meer bereiken dan in ons eentje. Het was soms best uitdagend om alle informatie te vinden en te begrijpen, maar door met experts te praten (zoals bij TNO) werd het veel duidelijker.</p>
+    </div>
+  </section>
+
+  <!-- Logboek -->
+  <section id="logboek" data-aos="fade-up">
+    <h2>Logboek</h2>
+    <p>Hier is een overzicht van wie wat heeft gedaan:</p>
+    <ul>
+      <li>
+        <strong>Faizaan:</strong>
+        <ul>
+          <li>Schreef de introductie</li>
+          <li>Deed onderzoek naar smart grids</li>
+          <li>Maakte de uitleg over hoe smart grids werken en welke technologieën erbij horen</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Mohammed:</strong>
+        <ul>
+          <li>Onderzocht nieuwe verwarmingsmethoden</li>
+          <li>Maakte het overzicht van verschillende verwarmingstechnieken</li>
+          <li>Analyseerde de voor- en nadelen van elke methode</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Rigginio:</strong>
+        <ul>
+          <li>Deed onderzoek naar batterijopslag</li>
+          <li>Schreef over verschillende soorten batterijen en hun toepassingen</li>
+          <li>Maakte de eindconclusie van het hele werkstuk</li>
+        </ul>
+      </li>
+    </ul>
+    <p>We hebben regelmatig samen overlegd om ervoor te zorgen dat alle delen goed op elkaar aansloten en hebben elkaar geholpen waar nodig. Door deze samenwerking hebben we een compleet beeld kunnen geven van hoe deze technologieën samen kunnen zorgen voor een duurzamere toekomst.</p>
+  </section>
+
+  <!-- Grafieken / Beeldend onderdeel -->
+  <section id="grafieken" data-aos="fade-up">
+    <h2>Beeldend onderdeel - Grafieken</h2>
+    <p>Hieronder een aantal interactieve en uitgebreide grafieken:</p>
+    <div class="chart-container">
+      <!-- Smart Grid grafiek: 3 balken -->
+      <div class="chart-box">
+        <canvas id="smartGridChart"></canvas>
+        <p>Efficiëntie verbetering bij Smart Grids (Min, Gemiddeld, Max)</p>
+      </div>
+      <!-- Warmtepomp grafiek: 3 balken -->
+      <div class="chart-box">
+        <canvas id="warmtepompChart"></canvas>
+        <p>Warmtepomp: Warmte-output verhouding (Min, Gemiddeld, Max)</p>
+      </div>
+      <!-- Batterijopslag grafiek: 2 datasets (line chart) -->
+      <div class="chart-box">
+        <canvas id="batteryChart"></canvas>
+        <p>Batterijopslag: Maandelijkse energieopslag vs. verbruik (kWh)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabellen -->
+  <section id="tabellen" data-aos="fade-up">
+    <h2>Data Tabellen</h2>
+    <div class="subsection">
+      <h3>Overzicht Technieken</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Technologie</th>
+            <th>Voordeel</th>
+            <th>Nadeel</th>
+            <th>Opmerking</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Smart Grids</td>
+            <td>Verbeterde efficiëntie (10-25%)</td>
+            <td>Hoge investeringskosten</td>
+            <td>Automatische energiedistributie</td>
+          </tr>
+          <tr>
+            <td>Warmtepompen</td>
+            <td>3-5x meer warmte-output</td>
+            <td>Hoge installatiekosten</td>
+            <td>Effectief bij goede isolatie</td>
+          </tr>
+          <tr>
+            <td>Batterijopslag</td>
+            <td>Opslag overtollige energie</td>
+            <td>Duur en milieubelasting (lithium)</td>
+            <td>Essentieel voor duurzame energie</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsection">
+      <h3>Maandelijkse Batterijgegevens (voorbeeld)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Maand</th>
+            <th>Opgeslagen Energie (kWh)</th>
+            <th>Verbruikte Energie (kWh)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jan</td>
+            <td>20</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Feb</td>
+            <td>30</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Mar</td>
+            <td>50</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Apr</td>
+            <td>70</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Mei</td>
+            <td>90</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Jun</td>
+            <td>110</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Jul</td>
+            <td>130</td>
+            <td>70</td>
+          </tr>
+          <tr>
+            <td>Aug</td>
+            <td>120</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>Sep</td>
+            <td>100</td>
+            <td>55</td>
+          </tr>
+          <tr>
+            <td>Okt</td>
+            <td>80</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Nov</td>
+            <td>60</td>
+            <td>35</td>
+          </tr>
+          <tr>
+            <td>Dec</td>
+            <td>40</td>
+            <td>25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Bronnen -->
+  <section id="bronnen" data-aos="fade-up">
+    <h2>Bronnen</h2>
+    <ul>
+      <li><a href="https://www.iea.org" target="_blank">IEA Heat Pump Technology Collaboration Programme</a></li>
+      <li><a href="https://www.milieucentraal.nl" target="_blank">Milieu Centraal: "Verwarming zonder aardgas"</a></li>
+      <li><a href="https://www.tno.nl" target="_blank">TNO Onderzoek naar hybride verwarmingssystemen</a></li>
+      <li><a href="https://chargeblock.nl/hoe-werkt-batterij-opslag/" target="_blank">ChargeBlock: Hoe werkt batterij opslag?</a></li>
+      <li><a href="https://www.milieucentraal.nl/energie-besparen/zonnepanelen/thuisbatterij-zonne-energie-opslaan/" target="_blank">Milieu Centraal: Thuisbatterij zonne-energie opslaan</a></li>
+      <li><a href="https://vandebron.nl/blog/zonne-energie-opslaan-voor-winter" target="_blank">Van de Bron: Zonne-energie opslaan voor winter</a></li>
+      <li><a href="https://www.klimaathelpdesk.org/answers/hoe-slaan-we-duurzame-energie-in-de-zomer-op-" target="_blank">Klimaat Helpdesk: Hoe slaan we duurzame energie in de zomer op?</a></li>
+      <li><a href="https://www.tudelft.nl/tbm/onderzoek/projecten/smart-grids#:~:text=Het%20smart%20grid%20of%20het,die%20spanningsniveaus%20en%20%2Dkwaliteit%20monitoren" target="_blank">TU Delft: Smart Grids</a></li>
+      <li><a href="https://www.energids.be/nl/vraag-antwoord/wat-is-een-smart-grid/1581/#:~:text=Slimme%20netten%20of%20'smart%20grids,ze%20meteen%20ingrijpen%20vanop%20afstand" target="_blank">Energids: Wat is een smart grid?</a></li>
+      <li><a href="https://www.edepartment.nl/energiebegrippen/smart-grids/" target="_blank">eDepartment: Smart Grids</a></li>
+      <li><a href="https://tibo.energy/nl/blog/smart-grid-uitgelegd" target="_blank">Tibo Energy: Smart Grid Uitgelegd</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 PWS - Mohammed Ali, Rigginio en Faizaan</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Smart Grid Chart (Bar) met 3 balken: Min, Gemiddeld en Max efficiëntie
+    const ctxSmart = document.getElementById('smartGridChart').getContext('2d');
+    const smartGridChart = new Chart(ctxSmart, {
+      type: 'bar',
+      data: {
+        labels: ['Min Efficiëntie', 'Gemiddeld', 'Max Efficiëntie'],
+        datasets: [{
+          label: 'Efficiëntie (%)',
+          data: [10, 18, 25],
+          backgroundColor: [
+            'rgba(10, 147, 150, 0.8)',
+            'rgba(10, 147, 150, 0.6)',
+            'rgba(10, 147, 150, 0.8)'
+          ],
+          borderColor: [
+            'rgba(10, 147, 150, 1)',
+            'rgba(10, 147, 150, 1)',
+            'rgba(10, 147, 150, 1)'
+          ],
+          borderWidth: 1,
+          borderRadius: 8,
+          hoverBackgroundColor: [
+            'rgba(10, 147, 150, 1)',
+            'rgba(10, 147, 150, 0.9)',
+            'rgba(10, 147, 150, 1)'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => context.parsed.y + '% efficiëntie'
+            }
+          },
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 30,
+            ticks: { stepSize: 5 }
+          }
+        },
+        animation: { duration: 1500 }
+      }
+    });
+
+    // Warmtepomp Chart (Bar) met 3 balken: Min, Gemiddeld en Max
+    const ctxWarmte = document.getElementById('warmtepompChart').getContext('2d');
+    const warmtepompChart = new Chart(ctxWarmte, {
+      type: 'bar',
+      data: {
+        labels: ['Min Verhouding', 'Gemiddeld', 'Max Verhouding'],
+        datasets: [{
+          label: 'Warmte-output (x)',
+          data: [3, 4, 5],
+          backgroundColor: [
+            'rgba(0, 95, 115, 0.8)',
+            'rgba(0, 95, 115, 0.6)',
+            'rgba(0, 95, 115, 0.8)'
+          ],
+          borderColor: [
+            'rgba(0, 95, 115, 1)',
+            'rgba(0, 95, 115, 1)',
+            'rgba(0, 95, 115, 1)'
+          ],
+          borderWidth: 1,
+          borderRadius: 8,
+          hoverBackgroundColor: [
+            'rgba(0, 95, 115, 1)',
+            'rgba(0, 95, 115, 0.9)',
+            'rgba(0, 95, 115, 1)'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => context.parsed.y + 'x warmte-output'
+            }
+          },
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 6,
+            ticks: { stepSize: 1 }
+          }
+        },
+        animation: { duration: 1500 }
+      }
+    });
+
+    // Batterijopslag Chart (Line) met 2 datasets: Opgeslagen Energie en Verbruikte Energie
+    const ctxBattery = document.getElementById('batteryChart').getContext('2d');
+    const batteryChart = new Chart(ctxBattery, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+        datasets: [
+          {
+            label: 'Opgeslagen Energie (kWh)',
+            data: [20, 30, 50, 70, 90, 110, 130, 120, 100, 80, 60, 40],
+            fill: true,
+            backgroundColor: 'rgba(10, 147, 150, 0.2)',
+            borderColor: 'rgba(10, 147, 150, 1)',
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          },
+          {
+            label: 'Verbruikte Energie (kWh)',
+            data: [15, 20, 30, 40, 50, 60, 70, 65, 55, 45, 35, 25],
+            fill: false,
+            borderColor: 'rgba(0, 95, 115, 1)',
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => context.parsed.y + ' kWh'
+            }
+          },
+          legend: { display: true }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 20 }
+          }
+        },
+        animation: { duration: 1500 }
+      }
+    });
+  </script>
+</body>
+</html>
